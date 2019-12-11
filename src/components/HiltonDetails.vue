@@ -1,0 +1,98 @@
+<template>
+  <div class="HiltonDetails">
+    <h2>Hilton Sharm</h2>
+    <div class="selectNights">
+      <strong>For</strong>
+      <select>
+        <option value>1</option>
+        <option value>2</option>
+        <option value>3</option>
+        <option value>4</option>
+        <option value>5</option>
+      </select>
+      <strong>Nights</strong>
+    </div>
+    <div class="slideShow">
+      <div class="bigImage">
+        <img src="@/assets/images/picHotel.jpg" alt />
+      </div>
+      <div class="smallImges">
+        <img src="@/assets/images/pic-slide.jpg" alt />
+        <img src="@/assets/images/picHotel.jpg" alt />
+        <img src="@/assets/images/pic-slide.jpg" alt />
+        <img src="@/assets/images/picHotel.jpg" alt />
+        <img src="@/assets/images/pic-slide.jpg" alt />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HiltonDetails',
+  props: {},
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style lang="scss">
+.HiltonDetails {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
+  h2 {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: green;
+    font-weight: bold;
+  }
+  .slideShow {
+    margin-top: 30px;
+    .bigImage {
+      img {
+        width: 1000px;
+        height: 500px;
+        object-fit: cover;
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0px 0px 6px 2px #dddd;
+      }
+    }
+    .smallImges {
+      img {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin: 10px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+  .selectNights {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    strong {
+      margin: 10px;
+    }
+    select {
+      width: 80px;
+      height: 30px;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+}
+</style>
