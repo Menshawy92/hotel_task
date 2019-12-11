@@ -29,11 +29,11 @@
 
 <script>
 export default {
-  name: 'HiltonDetails',
+  name: "HiltonDetails",
   props: {},
   data() {
     return {};
-  },
+  }
 };
 </script>
 

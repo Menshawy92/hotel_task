@@ -8,29 +8,31 @@
 </template>
 
 <script>
-import HiltonItem from '@/components/HiltonItem.vue';
-import axios from 'axios';
+import HiltonItem from "@/components/HiltonItem.vue";
+import axios from "axios";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HiltonItem,
+    HiltonItem
   },
   data() {
     return {
-      hotels: null,
+      hotels: null
     };
   },
   mounted() {
-    return axios.get('http://my-json-server.typicode.com/fly365com/code-challenge/hotels').then((response) => {
-      this.hotels = response.data;
-    });
-  },
+    return axios
+      .get("http://my-json-server.typicode.com/fly365com/code-challenge/hotels")
+      .then(response => {
+        this.hotels = response.data;
+      });
+  }
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
