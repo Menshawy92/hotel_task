@@ -5,7 +5,7 @@
       <img :src="dataHotel.photo" width="100" alt />
       <div class="conText">
         <ul>
-          <li>{{ dataHotel.pricePerNight }} in Night</li>
+          <li>{{ dataHotel.pricePerNight * nightsCount}} in Night</li>
           <li>{{ dataHotel.totalScore }} Very Good</li>
           <li>{{ dataHotel.totalReviews }} Reviews</li>
         </ul>
@@ -20,6 +20,9 @@ export default {
   props: {
     dataHotel: {
       required: true
+    },
+    nightsCount: {
+      type: [String, Number]
     }
   },
   data() {

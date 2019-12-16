@@ -3,12 +3,13 @@
     <h2>Hilton Sharm</h2>
     <div class="selectNights">
       <strong>For</strong>
-      <select>
+      <select @change="updateNightsCount" v-model="nightsCount">
         <option value>1</option>
-        <option value>2</option>
-        <option value>3</option>
-        <option value>4</option>
-        <option value>5</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
       </select>
       <strong>Nights</strong>
     </div>
@@ -30,9 +31,21 @@
 <script>
 export default {
   name: "HiltonDetails",
-  props: {},
+  props: {
+    cost: {
+      type: String
+    }
+  },
   data() {
-    return {};
+    return {
+      dataHotel: "",
+      nightsCount: 1
+    };
+  },
+  methods: {
+    updateNightsCount() {
+      this.$emit("nights-count-uodated", this.nightsCount);
+    }
   }
 };
 </script>

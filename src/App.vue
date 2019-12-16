@@ -1,23 +1,33 @@
 <template>
   <div id="app">
     <div class="HiltonItemList">
-      <HiltonItem v-for="hotel in hotels" :key="hotel.id" :dataHotel="hotel" />
+      <HiltonItem
+        v-bind="{nightsCount}"
+        v-for="hotel in hotels"
+        :key="hotel.id"
+        :dataHotel="hotel"
+        :cost="s"
+      />
     </div>
-    <!-- <HiltonDetails /> -->
+    <HiltonDetails @nights-count-uodated="nightsCount = $event" />
   </div>
 </template>
 
 <script>
 import HiltonItem from "@/components/HiltonItem.vue";
+import HiltonDetails from "@/components/HiltonDetails.vue";
 import axios from "axios";
 export default {
   name: "app",
   components: {
-    HiltonItem
+    HiltonItem,
+    HiltonDetails
   },
   data() {
     return {
-      hotels: null
+      hotels: null,
+      pricePerNight: null,
+      nightsCount: 1
     };
   },
   mounted() {
