@@ -1,5 +1,5 @@
 <template>
-  <div class="HiltonDetails">
+  <div class="HiltonDetails" v-if="currentHotel == hotel.id">
     <h2>Hilton Sharm</h2>
     <div class="selectNights">
       <strong>For</strong>
@@ -34,18 +34,29 @@ export default {
   props: {
     cost: {
       type: String
+    },
+    hotel: {
+      required: true
     }
   },
   data() {
     return {
       dataHotel: "",
-      nightsCount: 1
+      nightsCount: 1,
+      currentHotel: 0
     };
   },
   methods: {
     updateNightsCount() {
       this.$emit("nights-count-uodated", this.nightsCount);
     }
+  },
+  mounted: function() {
+    this.$root.eventBus.$on("show-hotel-div", data => {
+      debugger;
+      this.currentHotel = data;
+      console.log(data);
+    });
   }
 };
 </script>

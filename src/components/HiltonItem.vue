@@ -8,6 +8,9 @@
           <li>{{ dataHotel.pricePerNight * nightsCount}} in Night</li>
           <li>{{ dataHotel.totalScore }} Very Good</li>
           <li>{{ dataHotel.totalReviews }} Reviews</li>
+          <li>
+            <a href="#" @click.prevent="showHotelData(dataHotel.id)">Show Hotel Content</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -29,6 +32,11 @@ export default {
     return {
       item: [1, 2, 3]
     };
+  },
+  methods: {
+    showHotelData: function(hotel_id) {
+      this.$root.eventBus.$emit("show-hotel-div", hotel_id);
+    }
   }
 };
 </script>

@@ -6,10 +6,14 @@
         v-for="hotel in hotels"
         :key="hotel.id"
         :dataHotel="hotel"
-        :cost="s"
       />
     </div>
-    <HiltonDetails @nights-count-uodated="nightsCount = $event" />
+    <HiltonDetails
+      v-for="hotel in hotels"
+      :key="hotel.id"
+      @nights-count-uodated="nightsCount = $event"
+      :hotel="hotel"
+    />
   </div>
 </template>
 
@@ -29,6 +33,11 @@ export default {
       pricePerNight: null,
       nightsCount: 1
     };
+  },
+  methods: {
+    showSelectedDiv: function() {
+      debugger;
+    }
   },
   mounted() {
     return axios
