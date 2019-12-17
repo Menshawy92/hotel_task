@@ -1,6 +1,6 @@
 <template>
-  <div class="HiltonDetails" v-if="currentHotel == hotel.id">
-    <h2>Hilton Sharm</h2>
+  <div class="HiltonDetails" v-if="hotel">
+    <h2>{{ hotel.name}}</h2>
     <div class="selectNights">
       <strong>For</strong>
       <select @change="updateNightsCount" v-model="nightsCount">
@@ -15,31 +15,35 @@
     </div>
     <div class="slideShow">
       <div class="bigImage">
-        <img :src="dataHotel.pictures[0].photo" alt />
+        <img :src="currentPic" alt />
       </div>
       <div class="smallImges">
-        <img :src="dataHotel.pictures[0].thumbnail" v-for="image in dataHotel" :key="image" alt />
+        <img
+          v-for="(image, index) in hotel.pictures"
+          :key="index"
+          :src="image.thumbnail"
+          @click="currentPic = image.photo"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "HiltonDetails",
   props: {
     cost: {
       type: String
-    },
-    hotel: {
-      required: true
     }
   },
   data() {
     return {
-      dataHotel: "",
       nightsCount: 1,
-      currentHotel: 0
+      currentHotel: 0,
+      hotel: "",
+      currentPic: ""
     };
   },
   methods: {
@@ -49,7 +53,15 @@ export default {
   },
   mounted: function() {
     this.$root.eventBus.$on("show-hotel-div", data => {
-      this.currentHotel = data;
+      axios
+        .get(
+          "http://my-json-server.typicode.com/fly365com/code-challenge/hotelDetails/" +
+            data
+        )
+        .then(response => {
+          this.hotel = response.data;
+          this.currentPic = this.hotel.pictures[0].photo;
+        });
     });
   }
 };

@@ -1,4 +1,4 @@
-git<template>
+<template>
   <div id="app">
     <div class="HiltonItemList">
       <HiltonItem
@@ -8,12 +8,7 @@ git<template>
         :dataHotel="hotel"
       />
     </div>
-    <HiltonDetails
-      v-for="hotel in hotels"
-      :key="hotel.id"
-      @nights-count-uodated="nightsCount = $event"
-      :hotel="hotel"
-    />
+    <HiltonDetails @nights-count-uodated="nightsCount = $event" />
   </div>
 </template>
 
