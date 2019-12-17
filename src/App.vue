@@ -6,10 +6,14 @@
         v-for="hotel in hotels"
         :key="hotel.id"
         :dataHotel="hotel"
-        :cost="s"
       />
     </div>
-    <HiltonDetails @nights-count-uodated="nightsCount = $event" />
+    <HiltonDetails
+      v-for="hotel in hotels"
+      :key="hotel.id"
+      @nights-count-uodated="nightsCount = $event"
+      :dataHotel="hotel"
+    />
   </div>
 </template>
 
@@ -27,12 +31,15 @@ export default {
     return {
       hotels: null,
       pricePerNight: null,
-      nightsCount: 1
+      nightsCount: 1,
+      detailsHotels: null
     };
   },
   mounted() {
     return axios
-      .get("http://my-json-server.typicode.com/fly365com/code-challenge/hotels")
+      .get(
+        "http://my-json-server.typicode.com/fly365com/code-challenge/hotels/"
+      )
       .then(response => {
         this.hotels = response.data;
       });

@@ -26,9 +26,7 @@ export default {
     }
   },
   data() {
-    return {
-      item: [1, 2, 3]
-    };
+    return {};
   }
 };
 </script>
