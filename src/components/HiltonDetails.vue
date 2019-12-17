@@ -15,14 +15,10 @@
     </div>
     <div class="slideShow">
       <div class="bigImage">
-        <img src="@/assets/images/picHotel.jpg" alt />
+        <img :src="dataHotel.pictures[0].photo" alt />
       </div>
       <div class="smallImges">
-        <img src="@/assets/images/pic-slide.jpg" alt />
-        <img src="@/assets/images/picHotel.jpg" alt />
-        <img src="@/assets/images/pic-slide.jpg" alt />
-        <img src="@/assets/images/picHotel.jpg" alt />
-        <img src="@/assets/images/pic-slide.jpg" alt />
+        <img :src="dataHotel.pictures[0].thumbnail" v-for="image in dataHotel" :key="image" alt />
       </div>
     </div>
   </div>

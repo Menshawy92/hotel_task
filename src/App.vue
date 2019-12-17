@@ -1,4 +1,4 @@
-<template>
+git<template>
   <div id="app">
     <div class="HiltonItemList">
       <HiltonItem
@@ -31,12 +31,15 @@ export default {
     return {
       hotels: null,
       pricePerNight: null,
-      nightsCount: 1
+      nightsCount: 1,
+      detailsHotels: null
     };
   },
   mounted() {
     return axios
-      .get("http://my-json-server.typicode.com/fly365com/code-challenge/hotels")
+      .get(
+        "http://my-json-server.typicode.com/fly365com/code-challenge/hotels/"
+      )
       .then(response => {
         this.hotels = response.data;
       });
