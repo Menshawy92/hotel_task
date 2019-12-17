@@ -34,11 +34,6 @@ export default {
       nightsCount: 1
     };
   },
-  methods: {
-    showSelectedDiv: function() {
-      debugger;
-    }
-  },
   mounted() {
     return axios
       .get("http://my-json-server.typicode.com/fly365com/code-challenge/hotels")

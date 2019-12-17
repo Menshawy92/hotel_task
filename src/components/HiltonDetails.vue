@@ -53,9 +53,7 @@ export default {
   },
   mounted: function() {
     this.$root.eventBus.$on("show-hotel-div", data => {
-      debugger;
       this.currentHotel = data;
-      console.log(data);
     });
   }
 };
