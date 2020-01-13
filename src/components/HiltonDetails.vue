@@ -26,8 +26,13 @@
         />
       </div>
     </div>
-    <div>
-      <p v-for="comment in hotel.reviews" :key="comment.id">{{comment.review}}</p>
+    <div class="comments">
+      <select @change="sorType($event)">
+        <option value="sortPPP">Try!</option>
+        <option value="sort">Try!?</option>
+      </select>
+      <h1>Comments</h1>
+      <p class="text" v-for="comment in hotel.reviews" :key="comment.id">{{comment.review}}</p>
     </div>
   </div>
 </template>
@@ -48,6 +53,15 @@ export default {
   methods: {
     updateNightsCount() {
       this.$emit("nights-count-uodated", this.nightsCount);
+    },
+    sorType: function(event) {
+      this.reviews.sort(function(a, b) {
+        if (event.target.value === "sort") {
+          return a - b;
+        }
+        return b - a;
+      });
+      //  points.sort(function(a, b){return a-b});
     }
   },
   mounted: function() {
@@ -72,6 +86,15 @@ export default {
   border-top: 1px solid #ddd;
   margin-top: 20px;
   padding-top: 20px;
+  .comments {
+    max-width: 1200px;
+    margin: auto;
+    .text {
+      text-align: left;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  }
   h2 {
     text-transform: uppercase;
     font-size: 40px;
