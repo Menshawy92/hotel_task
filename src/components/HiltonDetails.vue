@@ -26,6 +26,9 @@
         />
       </div>
     </div>
+    <div>
+      <p v-for="comment in hotel.reviews" :key="comment.id">{{comment.review}}</p>
+    </div>
   </div>
 </template>
 
@@ -33,17 +36,13 @@
 import axios from "axios";
 export default {
   name: "HiltonDetails",
-  props: {
-    cost: {
-      type: String
-    }
-  },
   data() {
     return {
       nightsCount: 1,
       currentHotel: 0,
       hotel: "",
-      currentPic: ""
+      currentPic: "",
+      comment: ""
     };
   },
   methods: {
@@ -60,6 +59,7 @@ export default {
         )
         .then(response => {
           this.hotel = response.data;
+          this.comment = response.data;
           this.currentPic = this.hotel.pictures[0].photo;
         });
     });

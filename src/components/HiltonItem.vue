@@ -1,5 +1,5 @@
 <template>
-  <div class="HiltonItem">
+  <div class="HiltonItem" @click.prevent="showHotelData(dataHotel.id)">
     <h2>{{ dataHotel.name }}</h2>
     <div class="HiltonItem__details">
       <img :src="dataHotel.photo" width="100" alt />
@@ -8,9 +8,6 @@
           <li>{{ dataHotel.pricePerNight * nightsCount}} in Night</li>
           <li>{{ dataHotel.totalScore }} Very Good</li>
           <li>{{ dataHotel.totalReviews }} Reviews</li>
-          <li>
-            <a href="#" @click.prevent="showHotelData(dataHotel.id)">Show Hotel Content</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -29,9 +26,7 @@ export default {
     }
   },
   data() {
-    return {
-      item: [1, 2, 3]
-    };
+    return {};
   },
   methods: {
     showHotelData: function(hotel_id) {

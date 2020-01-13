@@ -9,18 +9,21 @@
       />
     </div>
     <HiltonDetails @nights-count-uodated="nightsCount = $event" />
+    <!-- <comments></comments> -->
   </div>
 </template>
 
 <script>
 import HiltonItem from "@/components/HiltonItem.vue";
 import HiltonDetails from "@/components/HiltonDetails.vue";
+// import Comments from "@/components/comments.vue";
 import axios from "axios";
 export default {
   name: "app",
   components: {
     HiltonItem,
     HiltonDetails
+    // Comments
   },
   data() {
     return {
